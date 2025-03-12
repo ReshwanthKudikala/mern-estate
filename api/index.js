@@ -1,6 +1,8 @@
-const express=require('express');
-const {MongoClient} = require('mongodb');
-require('dotenv').config();
+import express from 'express';
+import {MongoClient} from 'mongodb';
+import userRouter from './routes/user.route.js';
+import dotenv from 'dotenv';
+dotenv.config();
 const app=express();
 
 
@@ -29,3 +31,5 @@ const PORT=process.env.PORT
 app.listen(PORT, () => {
     console.log(`🚀 Server is running on port ${PORT}`);
 });
+
+app.use("/api/user",userRouter);
